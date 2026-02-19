@@ -2,11 +2,11 @@
 import React, { useEffect } from 'react';
 import ImageCache from '../../../vendor/image-cache';
 
-import baseballSrc from '../../../images/baseball.svg';
-import basketballSrc from '../../../images/basketball.svg';
-import pingpongballSrc from '../../../images/pingpongball.svg';
-import beachballSrc from '../../../images/beachball.svg';
-import tennisballSrc from '../../../images/tennisball.svg';
+const baseballSrc = '/images/baseball.svg';
+const basketballSrc = '/images/basketball.svg';
+const pingpongballSrc = '/images/pingpongball.svg';
+const beachballSrc = '/images/beachball.svg';
+const tennisballSrc = '/images/tennisball.svg';
 
 import Ball from './Ball';
 
@@ -19,9 +19,9 @@ const images = [
 ];
 
 type Props = {
-  size: number,
-  value: number,
-  isAnimated: boolean,
+  size: number;
+  value: number;
+  isAnimated: boolean;
 };
 
 const getDataForValue = (value: number) => {

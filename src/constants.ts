@@ -2,13 +2,8 @@ import { compose } from './utils';
 
 import { convertHSBToHSL, stringifyHSL } from './helpers/color.helpers';
 
-// Our colors in Figma are given in HSB, which is a really intuitive way to
-// understand color. Unfortunately, CSS only support HSL, which is less
-// intuitive. Do the conversion here.
-const prepColor = compose(
-  stringifyHSL,
-  convertHSBToHSL
-);
+// Our colors in Figma are given in HSB, which is a really intuitive way to understand color. Unfortunately, CSS only support HSL, which is less intuitive. Do the conversion here.
+const prepColor = compose(stringifyHSL, convertHSBToHSL);
 
 export const COLORS = {
   red: {
@@ -228,13 +223,6 @@ export const BREAKPOINTS = {
   mdMin: `(min-width: ${BREAKPOINT_SIZES.md + 1}px)`,
   lgMin: `(min-width: ${BREAKPOINT_SIZES.lg + 1}px)`,
 };
-
-const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i;
-
-const userAgent =
-  typeof window !== 'undefined' ? window.navigator.userAgent : 'node';
-
-export const IS_MOBILE_USER_AGENT = mobileRegex.test(userAgent);
 
 export const HEADER_HEIGHT = 60;
 export const MAX_WIDTH = {

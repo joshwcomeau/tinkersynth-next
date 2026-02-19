@@ -5,13 +5,13 @@ import styled from 'styled-components';
 import { range } from '../../utils';
 
 type Props = {
-  num: number,
-  position: 'left' | 'right',
+  num: number;
+  position: 'left' | 'right';
 };
 
 const Notches = ({ num, position }: Props) => {
   return (
-    <Wrapper position={position}>
+    <Wrapper>
       {range(num).map(i => (
         <Notch key={i} />
       ))}
@@ -36,5 +36,4 @@ const Notch = styled.div`
   border-radius: 1px;
 `;
 
-// $FlowIgnore
 export default React.memo(Notches);

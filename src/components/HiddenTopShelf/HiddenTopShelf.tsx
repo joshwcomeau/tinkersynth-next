@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { COLORS } from '../../constants';
-import lakituSrc from '../../images/lakitu.png';
+const lakituSrc = '/images/lakitu.png';
 
 const HiddenTopShelf = () => {
   return (

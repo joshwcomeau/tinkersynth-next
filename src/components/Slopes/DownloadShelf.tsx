@@ -6,7 +6,6 @@ import svgToPng from '../../vendor/svg-to-png';
 import useWindowDimensions from '../../hooks/window-dimensions.hook';
 import useWorker from '../../hooks/worker.hook';
 import { COLORS, UNIT } from '../../constants';
-import ccLicenseSrc from '../../images/cc-license.png';
 import { getSwatchById } from '../../services/art-swatches.service';
 import { renderPolylines } from '../../services/polylines.service';
 import generateRandomName from '../../services/random-name.service';
@@ -23,12 +22,14 @@ import { SLOPES_ASPECT_RATIO } from './Slopes.constants';
 import { SlopesContext } from './SlopesState';
 import DownloadVariant from './DownloadVariant';
 
+const ccLicenseSrc = '/images/cc-license.png';
+
 const createDownloadShelfWorker = () =>
   new Worker(new URL('./DownloadShelf.worker.ts', import.meta.url));
 
 type Props = {
-  isVisible: boolean,
-  handleToggle: () => void,
+  isVisible: boolean;
+  handleToggle: () => void;
 };
 
 const PREVIEW_SIZE = 180;
@@ -60,38 +61,35 @@ const DownloadShelf = ({ isVisible, handleToggle }: Props) => {
     setSvgNode(parent.firstChild);
   };
 
-  React.useEffect(
-    () => {
-      window.clearTimeout(timeoutId.current);
+  React.useEffect(() => {
+    window.clearTimeout(timeoutId.current);
 
-      if (isVisible) {
-        setFilename(generateRandomName());
+    if (isVisible) {
+      setFilename(generateRandomName());
 
-        const relevantParams = { ...slopesParams };
-        delete relevantParams.disabledParams;
-        delete relevantParams.shuffle;
-        delete relevantParams.toggleMachinePower;
-        delete relevantParams.toggleParameter;
-        delete relevantParams.tweakParameter;
+      const relevantParams = { ...slopesParams };
+      delete relevantParams.disabledParams;
+      delete relevantParams.shuffle;
+      delete relevantParams.toggleMachinePower;
+      delete relevantParams.toggleParameter;
+      delete relevantParams.tweakParameter;
 
-        let messageData = {
-          canvasDimensions,
-          params: relevantParams,
-        };
+      let messageData = {
+        canvasDimensions,
+        params: relevantParams,
+      };
 
-        worker.postMessage(messageData);
-      } else {
-        // Wait until the animation completes
-        timeoutId.current = window.setTimeout(() => {
-          if (svgNode) {
-            svgNode.remove();
-            setSvgNode(null);
-          }
-        }, 600);
-      }
-    },
-    [isVisible]
-  );
+      worker.postMessage(messageData);
+    } else {
+      // Wait until the animation completes
+      timeoutId.current = window.setTimeout(() => {
+        if (svgNode) {
+          svgNode.remove();
+          setSvgNode(null);
+        }
+      }, 600);
+    }
+  }, [isVisible]);
 
   React.useEffect(() => () => window.clearTimeout(timeoutId.current));
 

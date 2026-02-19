@@ -55,7 +55,6 @@ self.onmessage = throttle(function({ data }) {
       getRenderOptions(width, height, kind, messageData)
     );
   } else {
-    // $FlowIgnore
     self.postMessage({ rows, ...messageData });
   }
 }, 17);

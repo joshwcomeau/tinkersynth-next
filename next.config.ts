@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   transpilePackages: ['react-icons-kit'],
+  reactStrictMode: false,
+
 };
 
 export default nextConfig;

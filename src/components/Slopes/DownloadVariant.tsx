@@ -10,8 +10,6 @@ import {
   renderPolylines,
   polylinesToSVG,
 } from '../../services/polylines.service';
-import darkTilesSrc from '../../images/transparent-tiles-dark.svg';
-import lightTilesSrc from '../../images/transparent-tiles-light.svg';
 
 import UnstyledButton from '../UnstyledButton';
 import Spin from '../Spin';
@@ -19,6 +17,9 @@ import Spin from '../Spin';
 import { SLOPES_ASPECT_RATIO } from './Slopes.constants';
 
 import type { SwatchData } from '../../types';
+
+const darkTilesSrc = '/images/transparent-tiles-dark.svg';
+const lightTilesSrc = '/images/transparent-tiles-light.svg';
 
 type Props = {
   size: number,

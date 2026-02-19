@@ -2,8 +2,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import slopesPlacardSrc from '../../images/slopes-placard.svg';
-
 import { SlopesContext } from './SlopesState';
 import Spacer from '../Spacer';
 import Screw from '../Screw';
@@ -112,7 +110,7 @@ const SlopesPlacard = ({ handleRemoval, enableMirrored }: Props) => {
 
       <Falling isFalling={isFalling}>
         <PlacardWrapper style={placardContainerStyles}>
-          <Placard src={slopesPlacardSrc} />
+          <Placard src="/images/slopes-placard.svg" />
         </PlacardWrapper>
       </Falling>
     </Wrapper>

@@ -3,12 +3,9 @@ import styled from 'styled-components';
 
 import { COLORS, HEADER_HEIGHT, UNIT, BREAKPOINTS } from '../../constants';
 
-import Logo from '../Logo';
-import Spacer from '../Spacer';
 import Link from '../Link';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import HeaderNavigationItem from './HeaderNavigationItem';
-import Particle from '../Particle';
 import LogoWithName from '../LogoWithName';
 import HamburgerMenu from '../HamburgerMenu';
 
@@ -72,6 +69,9 @@ const DesktopOnly = styled.span`
   }
 `;
 const MobileOnly = styled.span`
+  display: flex;
+  align-items: center;
+
   @media ${BREAKPOINTS.mdMin} {
     display: none;
   }

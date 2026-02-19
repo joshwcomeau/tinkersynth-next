@@ -1,4 +1,4 @@
-import { BREAKPOINT_SIZES, IS_MOBILE_USER_AGENT } from '../constants';
+import { BREAKPOINT_SIZES } from '../constants';
 
 export const getBreakpointFor = windowWidth =>
   Object.keys(BREAKPOINT_SIZES).find(
@@ -10,11 +10,18 @@ export const getDeviceType = breakpoint => {
     return 'desktop';
   }
 
+  const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i;
+
+  const userAgent =
+    typeof window !== 'undefined' ? window.navigator.userAgent : 'node';
+
+  const isMobileUA = mobileRegex.test(userAgent);
+
   if (!breakpoint) {
     breakpoint = getBreakpointFor(window.innerWidth);
   }
 
-  if (breakpoint === 'xs' || breakpoint === 'sm' || IS_MOBILE_USER_AGENT) {
+  if (breakpoint === 'xs' || breakpoint === 'sm' || isMobileUA) {
     return 'mobile';
   } else {
     return 'desktop';

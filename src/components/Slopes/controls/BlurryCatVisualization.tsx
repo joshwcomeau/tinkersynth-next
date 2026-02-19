@@ -1,9 +1,9 @@
 import React from 'react';
-
-import catSrc from '../../../images/cat-viz.svg';
+import { Spring } from 'react-spring';
 
 import Pixellate from '../../Pixellate';
-import { Spring } from 'react-spring';
+
+const catSrc = '/images/cat-viz.svg';
 
 const BlurryCatVisualization = ({ value, size, isAnimated }) => {
   return (

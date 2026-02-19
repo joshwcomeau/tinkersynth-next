@@ -7,7 +7,6 @@ import { useSearchParams } from 'next/navigation';
 
 import { COLORS, UNIT } from '../constants';
 import { smoothScrollTo } from '../utils';
-import ccLicense from '../images/cc-license.png';
 
 const faqPerfCount = '/videos/faq-perf-count.mp4';
 const faqPerfOcclusion = '/videos/faq-perf-occ-modern.mp4';
@@ -22,6 +21,8 @@ import Heading from '../components/Heading';
 import List from '../components/List';
 import TextLink from '../components/TextLink';
 import SimpleTable from '../components/SimpleTable';
+
+const ccLicense = '/images/cc-license.png';
 
 const IntraFAQLink = ({ id, setOpenQuestionId, children }) => (
   <TextLink
@@ -42,7 +43,9 @@ const IntraFAQLink = ({ id, setOpenQuestionId, children }) => (
 );
 
 const FAQ = () => {
-  const [openQuestionId, setOpenQuestionId] = React.useState<string | null>(null);
+  const [openQuestionId, setOpenQuestionId] = React.useState<string | null>(
+    null
+  );
   const searchParams = useSearchParams();
 
   React.useEffect(() => {

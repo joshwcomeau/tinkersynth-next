@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import StyledComponentsRegistry from '../lib/styled-components-registry';
 import { SITE_METADATA } from './site-metadata';
 
 export const metadata: Metadata = {
@@ -10,6 +11,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
   },
+  icons: [
+    {
+      rel: 'icon',
+      url:
+        process.env.NODE_ENV === 'production'
+          ? '/images/favicon.png'
+          : '/images/favicon.development.png',
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -19,7 +29,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+      </body>
     </html>
   );
 }

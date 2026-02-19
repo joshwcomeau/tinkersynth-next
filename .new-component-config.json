@@ -1,5 +1,5 @@
 {
-  "type": "functional",
+  "language": "typescript",
   "prettierConfig": {
     "singleQuote": true
   }

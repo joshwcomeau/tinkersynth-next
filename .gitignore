@@ -61,7 +61,6 @@ out/
 
 # Legacy gatsby (kept for reference)
 .cache/
-public
 
 # Mac files
 .DS_Store

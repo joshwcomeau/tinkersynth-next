@@ -4,10 +4,11 @@ import { useSpring, animated } from 'react-spring/hooks';
 
 import { COLORS } from '../../../constants';
 import { normalize, clamp } from '../../../utils';
-import radarSweep from '../../../images/radar-sweep-2x.png';
 
 import Svg from '../../Svg';
 import StaticNoise from './StaticNoise';
+
+const radarSweep = '/images/radar-sweep-2x.png';
 
 const getSweepAngle = value => {
   const rotationOffset = 180;

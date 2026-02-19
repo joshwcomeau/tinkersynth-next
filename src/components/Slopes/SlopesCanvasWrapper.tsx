@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import { useAppState } from '../../context/AppStateContext';
 import { UNIT, COLORS } from '../../constants';
-import slopesPlacardMobile from '../../images/slopes-placard-mobile.png';
 
 import Spacer from '../Spacer';
 import Button from '../Button';
@@ -19,13 +18,13 @@ import PoweredOffCanvas from './PoweredOffCanvas';
 import UnstyledButton from '../UnstyledButton';
 
 type Props = {
-  width: number,
-  height: number,
-  isFullExperience: boolean,
-  toggleDownloadShelf: () => void,
-  children: React.ReactNode,
-  isPoweredOn: boolean,
-  rememberCurrentlyFocusedElement: (ref: HTMLElement) => any,
+  width: number;
+  height: number;
+  isFullExperience: boolean;
+  toggleDownloadShelf: () => void;
+  children: React.ReactNode;
+  isPoweredOn: boolean;
+  rememberCurrentlyFocusedElement: (ref: HTMLElement) => any;
 };
 
 const SlopesCanvasWrapper = ({
@@ -47,7 +46,10 @@ const SlopesCanvasWrapper = ({
         {!isFullExperience && (
           <Header>
             <PlacardWrapper>
-              <img src={slopesPlacardMobile} style={{ width: 176 }} />
+              <img
+                src="/images/slopes-placard-mobile.png"
+                style={{ width: 176 }}
+              />
             </PlacardWrapper>
 
             <DestructiveCluster />

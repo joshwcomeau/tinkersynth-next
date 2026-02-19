@@ -6,7 +6,6 @@ import { power as powerIcon } from 'react-icons-kit/feather/power';
 import { shuffle as shuffleIcon } from 'react-icons-kit/feather/shuffle';
 
 import { COLORS, UNIT } from '../../../constants';
-import warningSrc from '../../../images/warning-wide.png';
 
 import { SlopesContext } from '../SlopesState';
 import { InstrumentCluster } from '../../ControlPanel';
@@ -16,6 +15,8 @@ import PowerButton from '../../PowerButton';
 import Spacer from '../../Spacer';
 
 import type { TweakParameterAction } from '../SlopesState';
+
+const warningSrc = '/images/warning-wide.png';
 
 type Props = {
   isPoweredOn: boolean,

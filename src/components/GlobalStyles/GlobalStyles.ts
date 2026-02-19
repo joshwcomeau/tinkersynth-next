@@ -1,38 +1,32 @@
 import { createGlobalStyle } from 'styled-components';
 
 import { COLORS } from '../../constants';
-import {
-  circularBook,
-  circularMedium,
-  circularBold,
-  circularBlack,
-} from '../../fonts';
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
     font-family: 'Circular';
-    src: url(${circularBook}) format('woff2');
+    src: url('/fonts/CircularStd-Book.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'Circular';
-    src: url(${circularMedium}) format('woff2');
+    src: url('/fonts/CircularStd-Medium.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'Circular';
-    src: url(${circularBold}) format('woff2');
+    src: url('/fonts/CircularStd-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'Circular';
-    src: url(${circularBlack}) format('woff2');
+    src: url('/fonts/CircularStd-Black.woff2') format('woff2');
     font-weight: 900;
     font-style: normal;
   }

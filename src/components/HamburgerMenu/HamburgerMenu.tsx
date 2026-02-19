@@ -51,6 +51,7 @@ const HamburgerMenu = ({ theme }: { theme: 'light' | 'dark' }) => {
 const Wrapper = styled(UnstyledButton)`
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 const MenuWrapper = styled.div`

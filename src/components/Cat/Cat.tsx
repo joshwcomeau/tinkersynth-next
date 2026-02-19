@@ -2,7 +2,7 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
-import spritesheetSrc from '../../images/cat-spritesheet.png';
+const spritesheetSrc = '/images/cat-spritesheet.png';
 
 const SPRITESHEET_HEIGHT = 125;
 const SPRITESHEET_CELL_WIDTH = 160;
@@ -16,7 +16,7 @@ type Status =
   | 'lying-asleep';
 
 type Props = {
-  status: Status,
+  status: Status;
 };
 
 const Cat = ({ status }: Props) => {

@@ -1,3 +1,4 @@
+// @flow
 /**
  * A hook that allows drawing to an OffscreenCanvas through a Web Worker,
  * if supported by the current browser.
@@ -38,9 +39,9 @@ const useCanvas = (
   messageData: any,
   handleMessage: HandleMessage
 ): ReturnVal => {
-  // We need to capture a reference to the underlying Canvas node (or OffscreenCanvas after transfer).
-  // We trust the consumer to use this ref on a <canvas> element.
-  const canvasRef = React.useRef<HTMLCanvasElement | OffscreenCanvas | null>(null);
+  // We need to capture a reference to the underlying Canvas node
+  // We trust the consumer to use this ref
+  const canvasRef = React.useRef(null);
 
   // In SSR mode, we don't want to try and do any of this.
   if (typeof window === 'undefined') {
@@ -52,10 +53,6 @@ const useCanvas = (
   const devicePixelRatio = getDevicePixelRatio();
   const supportsOffscreenCanvas = getOffscreenCanvasSupport();
   const hasSentCanvas = React.useRef(false);
-  // Track which canvas we've already transferred so we don't call
-  // transferControlToOffscreen() twice (e.g. React Strict Mode double-mount).
-  const transferredCanvasRef = React.useRef<HTMLCanvasElement | null>(null);
-  const offscreenCanvasRef = React.useRef<OffscreenCanvas | null>(null);
 
   // On mount, set up the worker message-handling
   React.useEffect(() => {
@@ -68,35 +65,21 @@ const useCanvas = (
       return;
     }
 
-    const canvas = canvasRef.current;
-
     // If the browser supports it, all we need to do is transfer control.
     // The actual calculating and updating will happen in SlopesCanvas.worker.
-    // Only transfer once per canvas element.
     if (supportsOffscreenCanvas) {
-      if (transferredCanvasRef.current === canvas) {
-        // Already transferred (e.g. Strict Mode re-ran effect); restore ref and
-        // reset hasSentCanvas so the paint effect will send the canvas again
-        // (worker may have been recreated after cleanup).
-        canvasRef.current = offscreenCanvasRef.current;
-        hasSentCanvas.current = false;
-        return;
-      }
-      transferredCanvasRef.current = canvas as HTMLCanvasElement;
-      const offscreen = (canvas as HTMLCanvasElement).transferControlToOffscreen();
-      offscreenCanvasRef.current = offscreen;
-      canvasRef.current = offscreen;
+      // Canvas _does_ have transferControlToOffscreen if
+      // `supportsOffscreenCanvas` is true. $FlowIgnore
+      canvasRef.current = canvasRef.current.transferControlToOffscreen();
     } else {
-      const context = (canvas as HTMLCanvasElement).getContext('2d');
-      if (!context) return;
-
+      const context = canvasRef.current.getContext('2d');
       context.scale(devicePixelRatio, devicePixelRatio);
 
       if (!worker) {
         return;
       }
 
-      worker.onmessage = ({ data }: { data: any }) => handleMessage(context, data);
+      worker.onmessage = ({ data }) => handleMessage(context, data);
     }
   }, []);
 
@@ -104,23 +87,19 @@ const useCanvas = (
   // `React.memo` should ensure that only the pertinent updates cause
   // a re-render.
   React.useEffect(() => {
-    let transfer: Transferable[] | undefined = undefined;
-    const message: {
-      devicePixelRatio: number;
-      supportsOffscreenCanvas: boolean;
-      canvas?: OffscreenCanvas;
-      messageData: any;
-    } = {
+    let transfer = undefined;
+    const message = {
       devicePixelRatio,
       supportsOffscreenCanvas,
+      canvas: undefined,
       messageData,
     };
 
     // If this is the very first time we're painting to the canvas, we need
     // to send it along, using the cumbersome "data and transfer" API.
     // More info: https://developers.google.com/web/updates/2018/08/offscreen-canvas
-    if (supportsOffscreenCanvas && !hasSentCanvas.current && canvasRef.current) {
-      message.canvas = canvasRef.current as OffscreenCanvas;
+    if (supportsOffscreenCanvas && !hasSentCanvas.current) {
+      message.canvas = canvasRef.current;
       transfer = [canvasRef.current];
 
       hasSentCanvas.current = true;
