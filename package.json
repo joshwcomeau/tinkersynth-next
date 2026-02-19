@@ -1,0 +1,57 @@
+{
+  "name": "tinkersynth",
+  "private": true,
+  "description": "Create art through serendipitous experimentation",
+  "version": "0.1.0",
+  "author": "Josh Comeau <joshwcomeau@gmail.com>",
+  "packageManager": "pnpm@9.1.4",
+  "scripts": {
+    "build": "next build",
+    "serve": "next start",
+    "build-and-serve": "next build && next start",
+    "dev": "next dev -p 3030",
+    "start": "pnpm run develop",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\""
+  },
+  "dependencies": {
+    "canvas-sketch-util": "1.5.0",
+    "focus-visible": "4.1.5",
+    "immer": "^1.12.0",
+    "line-intersect": "2.2.0",
+    "mixpanel-browser": "^2.26.0",
+    "query-string": "^6.2.0",
+    "random-seed": "^0.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-helmet": "^5.2.0",
+    "react-icons-kit": "^1.2.1",
+    "react-retro-hit-counter": "^1.0.1",
+    "react-spring": "7.1.2",
+    "react-tippy": "^1.2.3",
+    "resize-observer-polyfill": "1.5.1",
+    "styled-components": "^6.3.9",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "flightplan": "^0.6.19",
+    "jest": "23.6.0",
+    "moment": "^2.24.0",
+    "next": "16.1.6",
+    "prettier": "^1.15.2",
+    "typescript": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshwcomeau/tinkersynth"
+  },
+  "pnpm": {
+    "neverBuiltDependencies": [
+      "fibers",
+      "fsevents",
+      "sharp"
+    ]
+  }
+}
