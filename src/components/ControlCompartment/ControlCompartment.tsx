@@ -1,7 +1,8 @@
 // @ts-nocheck
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { Tooltip } from 'react-tippy';
+import Tippy from '@tippyjs/react';
+
 import { useSpring, animated } from 'react-spring/hooks';
 import Icon from '../Icon';
 import { alertCircle } from 'react-icons-kit/feather/alertCircle';
@@ -12,10 +13,10 @@ import UnstyledButton from '../UnstyledButton';
 import Spacer from '../Spacer';
 
 type Props = {
-  orientation: 'horizontal' | 'vertical',
-  numOfDoors?: 1 | 2,
-  isDisabled: boolean,
-  children: React.ReactNode,
+  orientation: 'horizontal' | 'vertical';
+  numOfDoors?: 1 | 2;
+  isDisabled: boolean;
+  children: React.ReactNode;
 };
 
 const RADIUS = '3px';
@@ -80,29 +81,25 @@ const ControlCompartment = ({
             ),
           }}
         >
-          <Tooltip
+          <Tippy
             interactiveBorder={10}
             animation="fade"
             duration={200}
-            tabIndex={isDisabled ? 0 : -1}
-            animateFill={false}
-            followCursor={true}
             arrow={true}
-            html={
-              <>
-                This control is disabled because it doesn't do anything with
+            content={
+              <span style={{ lineHeight: 1.4 }}>
+                This control is disabled because it doesn’t do anything with
                 current settings.
                 <br />
                 <Spacer size={8} />
                 Try tweaking other parameters to unlock this one!
-              </>
+              </span>
             }
-            style={{
-              lineHeight: 1.4,
-            }}
           >
-            <Icon icon={alertCircle} />
-          </Tooltip>
+            <span tabIndex={isDisabled ? 0 : -1} style={{ display: 'flex' }}>
+              <Icon icon={alertCircle} />
+            </span>
+          </Tippy>
         </FirstDoor>
         {numOfDoors === 2 && (
           <LastDoor

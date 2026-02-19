@@ -120,8 +120,8 @@ const TouchSlider = ({
   width,
   height,
   isDisabled,
-  dotSize,
-  colorway,
+  dotSize = 3,
+  colorway = 'cool',
 }: Props) => {
   if (typeof width !== 'number') {
     throw new Error('Please give TouchSlider an explicit width');
@@ -259,11 +259,6 @@ const TouchSlider = ({
       <Canvas ref={canvasRef} {...scaledCanvasProps} />
     </UnstyledButton>
   );
-};
-
-TouchSlider.defaultProps = {
-  dotSize: 3,
-  colorway: 'cool',
 };
 
 const Canvas = styled.canvas`

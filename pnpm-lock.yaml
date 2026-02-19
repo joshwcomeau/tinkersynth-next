@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@tippyjs/react':
+        specifier: ^4.2.6
+        version: 4.2.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       canvas-sketch-util:
         specifier: 1.5.0
         version: 1.5.0
@@ -47,15 +50,15 @@ importers:
       react-spring:
         specifier: 7.1.2
         version: 7.1.2(prop-types@15.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      react-tippy:
-        specifier: ^1.2.3
-        version: 1.4.0
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
       styled-components:
         specifier: ^6.3.9
         version: 6.3.9(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      tippy.js:
+        specifier: 6.3.1
+        version: 6.3.1
       uuid:
         specifier: ^3.3.2
         version: 3.4.0
@@ -323,8 +326,17 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@popperjs/core@2.11.8':
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
+
+  '@tippyjs/react@4.2.6':
+    resolution: {integrity: sha512-91RicDR+H7oDSyPycI13q3b7o4O60wa2oRbjlz2fyRLmHImc4vyDwuUP8NtZaN0VARJY5hybvDYrFzhY9+Lbyw==}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
 
   '@types/css-font-loading-module@0.0.7':
     resolution: {integrity: sha512-nl09VhutdjINdWyXxHWN/w9zlNCfr60JUqJbd24YXUuCwgeL0TpFSdElCwb6cxfB6ybE19Gjj4g0jsgkXxKv1Q==}
@@ -2088,10 +2100,6 @@ packages:
   pn@1.1.0:
     resolution: {integrity: sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==}
 
-  popper.js@1.16.1:
-    resolution: {integrity: sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==}
-    deprecated: You can find the new Popper v2 at @popperjs/core, this package is dedicated to the legacy v1
-
   posix-character-classes@0.1.1:
     resolution: {integrity: sha512-xTgYBc3fuo7Yt7JbiuFxSYGToMoz8fLoE6TC9Wx1P/u+LfeThMOAqmuyECnlBaaJb+u1m9hHiXUEtwW4OzfUJg==}
     engines: {node: '>=0.10.0'}
@@ -2220,9 +2228,6 @@ packages:
       prop-types: 15.x.x
       react: '>= 16.4.0'
       react-dom: '>= 16.4.0'
-
-  react-tippy@1.4.0:
-    resolution: {integrity: sha512-r/hM5XK9Ztr2ZY7IWKuRmISTlUPS/R6ddz6PO2EuxCgW+4JBcGZRPU06XcVPRDCOIiio8ryBQFrXMhFMhsuaHA==}
 
   react@19.2.4:
     resolution: {integrity: sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==}
@@ -2677,6 +2682,9 @@ packages:
   throat@4.1.0:
     resolution: {integrity: sha512-wCVxLDcFxw7ujDxaeJC6nfl2XfHJNYs8yUYJnvMgtPEFlttP9tHSfRUv2vBe6C4hkVFPWoP1P6ZccbYjmSEkKA==}
 
+  tippy.js@6.3.1:
+    resolution: {integrity: sha512-JnFncCq+rF1dTURupoJ4yPie5Cof978inW6/4S6kmWV7LL9YOSEVMifED3KdrVPEG+Z/TFH2CDNJcQEfaeuQww==}
+
   tmpl@1.0.5:
     resolution: {integrity: sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==}
 
@@ -3085,9 +3093,17 @@ snapshots:
   '@next/swc-win32-x64-msvc@16.1.6':
     optional: true
 
+  '@popperjs/core@2.11.8': {}
+
   '@swc/helpers@0.5.15':
     dependencies:
       tslib: 2.8.1
+
+  '@tippyjs/react@4.2.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+      tippy.js: 6.3.1
 
   '@types/css-font-loading-module@0.0.7': {}
 
@@ -5296,8 +5312,6 @@ snapshots:
 
   pn@1.1.0: {}
 
-  popper.js@1.16.1: {}
-
   posix-character-classes@0.1.1: {}
 
   possible-typed-array-names@1.1.0: {}
@@ -5429,10 +5443,6 @@ snapshots:
       prop-types: 15.8.1
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
-
-  react-tippy@1.4.0:
-    dependencies:
-      popper.js: 1.16.1
 
   react@19.2.4: {}
 
@@ -5976,6 +5986,10 @@ snapshots:
       require-main-filename: 1.0.1
 
   throat@4.1.0: {}
+
+  tippy.js@6.3.1:
+    dependencies:
+      '@popperjs/core': 2.11.8
 
   tmpl@1.0.5: {}
 

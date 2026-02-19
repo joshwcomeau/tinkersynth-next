@@ -25,7 +25,7 @@ const ColorCluster = ({
   isPoweredOn,
   animateTransitions,
   tweakParameter,
-}) => (
+}: Props) => (
   <Wrapper>
     <ColorPicker
       swatchId={swatchId}
@@ -36,7 +36,6 @@ const ColorCluster = ({
   </Wrapper>
 );
 
-// $FlowIgnore
 const OptimizedColorCluster = React.memo(ColorCluster);
 
 const PageContainer = ({ size }: { size: number }) => {

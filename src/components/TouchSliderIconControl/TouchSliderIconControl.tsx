@@ -22,7 +22,7 @@ const TouchSliderIconControl = ({
   updateValue,
   width,
   height,
-  dotSize = 4,
+  dotSize,
   visualizationComponent,
   isAnimated,
   isPoweredOn,

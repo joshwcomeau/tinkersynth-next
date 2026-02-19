@@ -14,7 +14,6 @@ const faqPerfResolution = '/videos/faq-perf-resolution.mp4';
 
 import LayoutSidePage from '../components/LayoutSidePage';
 import QuestionAndAnswer from '../components/QuestionAndAnswer';
-import Asterisk from '../components/Asterisk';
 import Paragraph from '../components/Paragraph';
 import Spacer from '../components/Spacer';
 import Heading from '../components/Heading';

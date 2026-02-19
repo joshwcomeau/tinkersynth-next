@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react';
 import styled from 'styled-components';
-import { Tooltip } from 'react-tippy';
+import Tippy from '@tippyjs/react';
 
 import useToggle from '../../hooks/toggle.hook';
 import useTimeout from '../../hooks/timeout.hook';
@@ -169,31 +169,27 @@ const SlopesCat = ({ walkSpeed = 8, delay = 15000 }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Tooltip
+      <Tippy
         animation="fade"
         duration={200}
-        distance={-10}
-        tabIndex={0}
-        animateFill={false}
-        followCursor={false}
+        offset={[0, -10]}
         interactive={true}
         arrow={true}
-        hideDelay={500}
-        html={
-          <>
+        delay={[0, 500]}
+        content={
+          <TooltipContent>
             Enjoying Tinkersynth? Follow its creator{' '}
-            <PatreonTooltipLink href={CREATOR_URL} target="_blank">
+            <TooltipLink href={CREATOR_URL} target="_blank">
               on Bluesky
-            </PatreonTooltipLink>
+            </TooltipLink>
             !
-          </>
+          </TooltipContent>
         }
-        style={{
-          lineHeight: 1.4,
-        }}
       >
-        <Cat status={status} />
-      </Tooltip>
+        <span tabIndex={0} style={{ display: 'block' }}>
+          <Cat status={status} />
+        </span>
+      </Tippy>
     </Wrapper>
   );
 };
@@ -207,9 +203,16 @@ const Wrapper = styled.a`
   }
 `;
 
-const PatreonTooltipLink = styled.a`
+const TooltipLink = styled.span`
   color: white;
   font-weight: bold;
+  text-decoration: underline;
+`;
+
+const TooltipContent = styled.div`
+  white-space: nowrap;
+  line-height: 1.4;
+  padding-block: 8px;
 `;
 
 export default SlopesCat;

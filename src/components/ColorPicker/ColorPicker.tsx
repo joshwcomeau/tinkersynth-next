@@ -4,7 +4,7 @@ import Icon from '../Icon';
 import { chevronUp } from 'react-icons-kit/feather/chevronUp';
 import { chevronDown } from 'react-icons-kit/feather/chevronDown';
 import { useSpring, animated } from 'react-spring/hooks';
-import { Tooltip } from 'react-tippy';
+import Tippy from '@tippyjs/react';
 
 import { COLORS } from '../../constants';
 import artSwatches from '../../services/art-swatches.service';
@@ -51,18 +51,14 @@ const ColorPicker = ({ size, swatchId, isAnimated, updateValue }) => {
 
   return (
     <Wrapper style={{ width: size * 1.5, height: size }}>
-      <Tooltip
+      <Tippy
         interactiveBorder={10}
         animation="fade"
         duration={200}
-        tabIndex={0}
-        animateFill={false}
-        followCursor={false}
         arrow={true}
-        html={swatch.label}
-        style={{
-          lineHeight: 1.4,
-        }}
+        content={
+          <span style={{ lineHeight: 1.4 }}>{swatch.label}</span>
+        }
       >
         {/*
         NOTE: Putting a click-handler on a div because it is unnecessary for
@@ -70,7 +66,7 @@ const ColorPicker = ({ size, swatchId, isAnimated, updateValue }) => {
         just a redundant focus-snatcher. Adding the click handler because
         sometimes mouse users will click it.
       */}
-        <VisualizationWrapper onClick={increment}>
+        <VisualizationWrapper onClick={increment} tabIndex={0}>
           <Gradient />
           <Swatches style={{ paddingTop: initialPadding }}>
             {artSwatches.map(swatch => (
@@ -92,7 +88,7 @@ const ColorPicker = ({ size, swatchId, isAnimated, updateValue }) => {
             ))}
           </Swatches>
         </VisualizationWrapper>
-      </Tooltip>
+      </Tippy>
       <Controls style={{ width: size / 2 }}>
         <IncrementDecrementButton
           style={{ width: size / 2, height: size / 2 }}

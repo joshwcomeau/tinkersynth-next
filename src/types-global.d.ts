@@ -1,8 +1,3 @@
-declare module 'react-tippy' {
-  import { ComponentType } from 'react';
-  export const Tooltip: ComponentType<any>;
-}
-
 declare module 'react-spring/hooks' {
   import { ComponentType } from 'react';
   export function useSpring<T>(props: T): any;

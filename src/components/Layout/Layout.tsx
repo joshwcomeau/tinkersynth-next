@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import 'tippy.js/dist/tippy.css';
 
 import { AppStateProvider } from '../../context/AppStateContext';
 import { COLORS } from '../../constants';
@@ -12,7 +13,6 @@ import Header from '../Header';
 import Footer from '../Footer';
 import HiddenTopShelf from '../HiddenTopShelf';
 
-import 'react-tippy/dist/tippy.css';
 import { HEADER_HEIGHT } from '../../constants';
 
 type Props = {
