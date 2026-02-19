@@ -15,7 +15,10 @@ const Footer = ({ theme }: { theme?: 'default' | 'dark' }) => {
   return (
     <Wrapper>
       <InnerWrapper>
-        <Link href="/slopes" style={{ display: 'block', textDecoration: 'none' }}>
+        <Link
+          href="/slopes"
+          style={{ display: 'block', textDecoration: 'none' }}
+        >
           <LogoWithName id="footer-logo" theme="dark" />
         </Link>
 
@@ -27,10 +30,6 @@ const Footer = ({ theme }: { theme?: 'default' | 'dark' }) => {
           <Line>
             <TextLink to="/privacy" style={{ color: COLORS.gray[500] }}>
               Privacy Policy
-            </TextLink>
-            &nbsp;&nbsp;&nbsp; ·&nbsp;&nbsp;&nbsp;
-            <TextLink to="/contact" style={{ color: COLORS.gray[500] }}>
-              Contact
             </TextLink>
           </Line>
         </CopyrightArea>

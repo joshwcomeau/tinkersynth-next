@@ -58,7 +58,6 @@ const GlobalStyles = createGlobalStyle`
   html, body {
     max-width: 100vw;
     background-color: ${COLORS.navy};
-    color: ${COLORS.white};
   }
 
 

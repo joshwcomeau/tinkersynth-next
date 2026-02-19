@@ -37,7 +37,6 @@ const HamburgerMenu = ({ theme }: { theme: 'light' | 'dark' }) => {
               </TopItems>
 
               <BottomItems>
-                <MenuItemLink to="/contact">Contact</MenuItemLink>
                 <MenuItemLink to="/privacy">Privacy Policy</MenuItemLink>
               </BottomItems>
             </Menu>

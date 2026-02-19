@@ -28,9 +28,6 @@ const Header = ({ theme, noBorder }) => {
             <HeaderNavigationItem color={navigationLinkColor} to="/faq">
               FAQ
             </HeaderNavigationItem>
-            <HeaderNavigationItem color={navigationLinkColor} to="/contact">
-              Contact
-            </HeaderNavigationItem>
           </Navigation>
         </DesktopOnly>
         <MobileOnly>
@@ -69,9 +66,6 @@ const DesktopOnly = styled.span`
   }
 `;
 const MobileOnly = styled.span`
-  display: flex;
-  align-items: center;
-
   @media ${BREAKPOINTS.mdMin} {
     display: none;
   }
